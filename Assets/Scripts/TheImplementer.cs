@@ -59,16 +59,23 @@ public class TheImplementer : MonoBehaviour
                     break;
             }
 
-            LoseUsage();
-            book = "";
-            chapter = 0;
-            verse = 0;
+            Resolve();
         }
     }
 
-    void LoseUsage() {
+    void Resolve() {
+        // Lose a usage
         GameObject.Find($"/Canvas/Uses/U{usesRemaining - (usesRemaining - 1)}").SetActive(false);
         usesRemaining--;
+
+        // Reset values
+        book = "";
+        chapter = 0;
+        verse = 0;
+
+        // Lock cursor
+        Cursor.visible = false;
+        Screen.lockCursor = true;
     }
 
     IEnumerator Wait(float time) {
