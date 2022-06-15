@@ -36,19 +36,31 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject player;
     private NavMeshAgent agent;
 
+    // Patroller data
     [Space(15)]
     public List<Vector3> patrolPoints;
     [HideInInspector] public int currentPatrolPoint = 0;
+
+    // Boundaries of spawning area
+    private float minX = -15;
+    private float maxX = 75;
+    private float minZ = -115;
+    private float maxZ = 45;
 
     void Start() {
         agent = GetComponent<NavMeshAgent>();
 
         if (spawnType == SpawnType.Randomized) {
-            transform.position = new Vector3(UnityEngine.Random.Range(-15, 75), Terrain.activeTerrain.SampleHeight(transform.position), UnityEngine.Random.Range(-115, 45));
+            if (movementType != MovementType.Patroller) {
+                transform.position = new Vector3(UnityEngine.Random.Range(minX, maxX), Terrain.activeTerrain.SampleHeight(transform.position), UnityEngine.Random.Range(minZ, maxZ));
+            } else {
+                Debug.LogError("Patroller types cannot be randomized");
+            }
         }
     }
 
     void Update() {
+        // Attack
         switch (attackType) {
             case AttackType.Chaser:
                 if (WithinRange(player.transform.position, transform.position, 20)) {
@@ -69,16 +81,16 @@ public class EnemyBehavior : MonoBehaviour
                 break;
         }
 
+        // Movement
         if (movementType == MovementType.Wanderer) {
-           
+            if (!agent.pathPending && agent.remainingDistance < 0.5f) {
+                agent.destination = new Vector3(UnityEngine.Random.Range(minX, maxX), Terrain.activeTerrain.SampleHeight(transform.position), UnityEngine.Random.Range(minZ, maxZ));
+            }
         } else if (movementType == MovementType.Patroller) {
-            if (!agent.pathPending) {
+            if (!agent.pathPending && agent.remainingDistance < 0.5f) {
                 agent.destination = patrolPoints[currentPatrolPoint];
                 currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Count;
             }
-
-        } else if (movementType == MovementType.Stalker) {
-           
         }
     }
 
