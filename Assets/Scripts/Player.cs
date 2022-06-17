@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Enemy") {
+        if (other.gameObject.tag.Contains("Enemy")) {
             strength -= 1;
             strengths.GetComponent<StrengthFadde>().LoseStrength(strength);
             StartCoroutine(WaitToRecheck());

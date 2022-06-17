@@ -32,9 +32,23 @@ public class ChapterSelection : MonoBehaviour
                             ib.colors = SetColor(colors, false);
                         }
                     }
+                } else if (implementer.book == "Exodus") {
+                    if (implementer.chapter == 20) {
+                        if (i == 17) {
+                            ib.colors = SetColor(colors, true);
+                        } else {
+                            ib.colors = SetColor(colors, false);
+                        }
+                    }
                 } else if (implementer.book == "Hebrews") {
                     if (implementer.chapter == 12) {
                         if (i == 29) {
+                            ib.colors = SetColor(colors, true);
+                        } else {
+                            ib.colors = SetColor(colors, false);
+                        }
+                    } else if (implementer.chapter == 4) {
+                        if (i == 12) {
                             ib.colors = SetColor(colors, true);
                         } else {
                             ib.colors = SetColor(colors, false);
@@ -81,6 +95,11 @@ public class ChapterSelection : MonoBehaviour
                     return 31;
                 }
                 break;
+            case "Exodus":
+                if (implementer.chapter == 20) {
+                    return 26;
+                }
+                break;
             case "Psalms":
                 if (implementer.chapter == 119) {
                     return 176;
@@ -89,6 +108,8 @@ public class ChapterSelection : MonoBehaviour
             case "Hebrews":
                 if (implementer.chapter == 12) {
                     return 29;
+                } else if (implementer.chapter == 4) {
+                    return 16;
                 }
                 break;
             case "Ephesians":

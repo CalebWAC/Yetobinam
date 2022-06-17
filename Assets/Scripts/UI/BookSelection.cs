@@ -30,8 +30,15 @@ public class BookSelection : MonoBehaviour
                         ib.colors = SetColor(colors, false);
                     }
                     break;
+                case "Exodus":
+                    if (i == 20) {
+                        ib.colors = SetColor(colors, true);
+                    } else {
+                        ib.colors = SetColor(colors, false);
+                    }
+                    break;
                 case "Hebrews":
-                    if (i == 12) {
+                    if (i == 12 || i == 4) {
                         ib.colors = SetColor(colors, true);
                     } else {
                         ib.colors = SetColor(colors, false);

@@ -13,10 +13,12 @@ public class TheImplementer : MonoBehaviour
     public GameObject fire;
     public GameObject pointer; 
     public GameObject light;
+    public GameObject sword;
 
     [HideInInspector]
     public bool onChapters = false;
     private int usesRemaining = 5;
+    private bool usedAVerse = false;
 
     public void Implement() {
         if (usesRemaining != 0) {
@@ -28,6 +30,7 @@ public class TheImplementer : MonoBehaviour
                             StartCoroutine(Wait(60));
                             Debug.Log("And God said, “Let there be light,” and there was light."); // ESV
                             // That was God, I was quoting God there.
+                            usedAVerse = true;
                         }
                     }
                     break;
@@ -36,6 +39,7 @@ public class TheImplementer : MonoBehaviour
                         if (verse == 133) {
                             pointer.SetActive(true);
                             Debug.Log("Direct my footsteps according to your word, let no sin rule over me."); // NIV
+                            usedAVerse = true;
                         }
                     }
                     break;
@@ -44,6 +48,13 @@ public class TheImplementer : MonoBehaviour
                         if (verse == 29) {
                             fire.SetActive(true);
                             Debug.Log("for our God is a consuming fire."); // ESV
+                            usedAVerse = true;
+                        }
+                    } else if (chapter == 4) {
+                        if (verse == 12) {
+                            sword.SetActive(true);
+                            Debug.Log("For the word of God is living and active, sharper than any two-edged sword, piercing to the division of soul and of spirit, of joints and of marrow, and discerning the thoughts and intentions of the heart."); // ESV
+                            usedAVerse = true;
                         }
                     }
                     break;
@@ -54,6 +65,7 @@ public class TheImplementer : MonoBehaviour
                             tpc.MoveSpeed = 10;
                             tpc.SprintSpeed = 15;
                             Debug.Log("and, as shoes for your feet, having put on the readiness given by the gospel of peace"); // ESV
+                            usedAVerse = true;
                         }
                     }
                     break;
@@ -64,6 +76,11 @@ public class TheImplementer : MonoBehaviour
     }
 
     void Resolve() {
+        // Checks for sword verses
+        if (!usedAVerse && sword.activeInHierarchy) {
+            GetComponent<TheSwordImplementer>().Implement(book, chapter, verse);
+        }
+
         // Lose a usage
         GameObject.Find($"/Canvas/Uses/U{usesRemaining - (usesRemaining - 1)}").SetActive(false);
         usesRemaining--;
