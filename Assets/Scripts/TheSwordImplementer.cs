@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TheSwordImplementer : MonoBehaviour
 {
+    public GameObject sphereOfInfluence;
+
     public void Implement(string book, int chapter, int verse)
     {
         switch (book) {
@@ -20,7 +22,7 @@ public class TheSwordImplementer : MonoBehaviour
 
     void Destroy(string type) 
     {
-        List<GameObject> inRadius = GameObject.Find("/Player/SphereOfInfluence").GetComponent<SphereOfInfluence>().inRadius;
+        List<GameObject> inRadius = sphereOfInfluence.GetComponent<SphereOfInfluence>().inRadius;
 
         foreach (GameObject enemy in inRadius) {
             if (enemy.tag.Contains(type)) {

@@ -21,4 +21,11 @@ public class SphereOfInfluence : MonoBehaviour
             inRadius.Remove(other.gameObject);
         }
     }
+
+    // Prevents the sphere of influence affecting the physical world
+    void OnCollisionEnter(Collision collision) 
+    {
+        Debug.Log($"Collided with {collision.gameObject.name}");
+        Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+    }
 }

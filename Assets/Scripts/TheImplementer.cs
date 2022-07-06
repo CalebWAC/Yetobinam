@@ -89,6 +89,7 @@ public class TheImplementer : MonoBehaviour
         book = "";
         chapter = 0;
         verse = 0;
+        usedAVerse = false;
 
         // Lock cursor
         Cursor.visible = false;
