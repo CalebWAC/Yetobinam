@@ -62,7 +62,7 @@ public class BookSelection : MonoBehaviour
         }
 
         // Deactivate the unused chapters
-        for (int i = chapters + 1; i <= 32; i++) { // Change the 32 to the number of total chapters
+        for (int i = chapters + 1; i <= 64; i++) { // Change the 32 to the number of total chapters
             string name = $"/Canvas/Chapters-Verses/Viewport/Content/{i}";
             GameObject.Find(name).SetActive(false);
         }
