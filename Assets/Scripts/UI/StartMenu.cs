@@ -30,7 +30,7 @@ public class StartMenu : MonoBehaviour
         }
 
         if (gameObject.name == "Solo") {
-            SceneManager.LoadScene("Playground");
+            SceneManager.LoadScene(1);
         }
     }
 }

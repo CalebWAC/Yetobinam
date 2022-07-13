@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TheImplementer : MonoBehaviour
 {
@@ -17,62 +18,72 @@ public class TheImplementer : MonoBehaviour
 
     [HideInInspector]
     public bool onChapters = false;
+    public TMPro.TextMeshProUGUI buttonText;
     private int usesRemaining = 5;
     private bool usedAVerse = false;
 
     public void Implement() {
-        if (usesRemaining != 0) {
-            switch (book) {
-                case "Genesis":
-                    if (chapter == 1) {
-                        if (verse == 3) {
-                            light.SetActive(true);
-                            StartCoroutine(Wait(60));
-                            Debug.Log("And God said, “Let there be light,” and there was light."); // ESV
-                            // That was God, I was quoting God there.
-                            usedAVerse = true;
+        if (SceneManager.GetActiveScene().buildIndex != 1) {
+            if (usesRemaining != 0) {
+                switch (book) {
+                    case "Genesis":
+                        if (chapter == 1) {
+                            if (verse == 3) {
+                                light.SetActive(true);
+                                StartCoroutine(Wait(60));
+                                Debug.Log("And God said, “Let there be light,” and there was light."); // ESV
+                                // That was God, I was quoting God there.
+                                usedAVerse = true;
+                            }
                         }
-                    }
-                    break;
-                case "Psalms":
-                    if(chapter == 119) {
-                        if (verse == 133) {
-                            pointer.SetActive(true);
-                            Debug.Log("Direct my footsteps according to your word, let no sin rule over me."); // NIV
-                            usedAVerse = true;
+                        break;
+                    case "Psalms":
+                        if(chapter == 119) {
+                            if (verse == 133) {
+                                pointer.SetActive(true);
+                                Debug.Log("Direct my footsteps according to your word, let no sin rule over me."); // NIV
+                                usedAVerse = true;
+                            }
                         }
-                    }
-                    break;
-                case "Hebrews":
-                    if (chapter == 12) {
-                        if (verse == 29) {
-                            fire.SetActive(true);
-                            Debug.Log("for our God is a consuming fire."); // ESV
-                            usedAVerse = true;
+                        break;
+                    case "Hebrews":
+                        if (chapter == 12) {
+                            if (verse == 29) {
+                                fire.SetActive(true);
+                                Debug.Log("for our God is a consuming fire."); // ESV
+                                usedAVerse = true;
+                            }
+                        } else if (chapter == 4) {
+                            if (verse == 12) {
+                                sword.SetActive(true);
+                                Debug.Log("For the word of God is living and active, sharper than any two-edged sword, piercing to the division of soul and of spirit, of joints and of marrow, and discerning the thoughts and intentions of the heart."); // ESV
+                                usedAVerse = true;
+                            }
                         }
-                    } else if (chapter == 4) {
-                        if (verse == 12) {
-                            sword.SetActive(true);
-                            Debug.Log("For the word of God is living and active, sharper than any two-edged sword, piercing to the division of soul and of spirit, of joints and of marrow, and discerning the thoughts and intentions of the heart."); // ESV
-                            usedAVerse = true;
+                        break;
+                    case "Ephesians":
+                        if (chapter == 6) {
+                            if (verse == 15) {
+                                var tpc = GameObject.Find("Player").GetComponent<StarterAssets.ThirdPersonController>();
+                                tpc.MoveSpeed = 10;
+                                tpc.SprintSpeed = 15;
+                                Debug.Log("and, as shoes for your feet, having put on the readiness given by the gospel of peace"); // ESV
+                                usedAVerse = true;
+                            }
                         }
-                    }
-                    break;
-                case "Ephesians":
-                    if (chapter == 6) {
-                        if (verse == 15) {
-                            var tpc = GameObject.Find("Player").GetComponent<StarterAssets.ThirdPersonController>();
-                            tpc.MoveSpeed = 10;
-                            tpc.SprintSpeed = 15;
-                            Debug.Log("and, as shoes for your feet, having put on the readiness given by the gospel of peace"); // ESV
-                            usedAVerse = true;
-                        }
-                    }
-                    break;
-            }
+                        break;
+                }
 
-            Resolve();
+                Resolve();
+            }
+        } else {
+            Set();
         }
+    }
+
+    public void Set() 
+    {
+        buttonText.text = $"{book.Substring(0, 3)} {chapter}:{verse}";
     }
 
     void Resolve() {
