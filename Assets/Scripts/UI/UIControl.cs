@@ -9,15 +9,16 @@ public class UIControl : MonoBehaviour
     public GameObject verseUI;
     private bool UIOpen = false;  
 
-    void Update() {
-        if (Keyboard.current.qKey.wasPressedThisFrame && !UIOpen) {
+    void OnMenu() 
+    {
+        if (!UIOpen) {
             UIOpen = true;
             verseUI.SetActive(true);
             Cursor.visible = true;
             // Cursor.lockState = CursorLockMode.None; 
             Screen.lockCursor = false;
             GameObject.Find("/Canvas/Books/Viewport/Content").transform.position = new Vector3(0, 0, 0);
-        } else if (Keyboard.current.qKey.wasPressedThisFrame && UIOpen) {
+        } else {
             UIOpen = false;
             verseUI.SetActive(false);
             Cursor.visible = false;

@@ -11,10 +11,11 @@ public class DestroyNot : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         if (SceneManager.GetActiveScene().buildIndex == 2) {
-            Debug.Log("Hier");
             foreach (Transform child in transform) {
-                if (!child.gameObject.name.Contains("Bar")) {
+                if (!child.gameObject.name.Contains("SelectionBar")) {
                     child.gameObject.SetActive(false);
+                } else if (child.gameObject.name.Contains("Weapon")) {
+                    GameObject.Find($"/Canvas/{child.gameObject.name}/Selector").SetActive(true);
                 }
             }
         }
