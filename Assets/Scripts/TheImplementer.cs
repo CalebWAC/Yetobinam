@@ -18,7 +18,7 @@ public class TheImplementer : MonoBehaviour
 
     [HideInInspector]
     public bool onChapters = false;
-    public TMPro.TextMeshProUGUI buttonText;
+    [HideInInspector] public TMPro.TextMeshProUGUI buttonText;
     private int usesRemaining = 5;
 
     public void Implement() {

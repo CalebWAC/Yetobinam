@@ -10,23 +10,30 @@ public class UIControl : MonoBehaviour
     private bool UIOpen = false; 
 
     private GameObject selector;
+    private TheSwordImplementer TSI;
 
     void Start() {
         selector = GameObject.Find("/Canvas/SelectionBarWeapon/Selector");
+        TSI = GameObject.Find("The Implementer").GetComponent<TheSwordImplementer>();
     }
 
     // Moves selector for active verse
     void Update() {
         if (Keyboard.current.digit1Key.wasPressedThisFrame) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, 4.095f, 0);
+            TSI.activeVerse = 1;
         } else if (Keyboard.current.digit2Key.wasPressedThisFrame) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, 1.750061f - 0.030061f, 0);
+            TSI.activeVerse = 2;
         } else if (Keyboard.current.digit3Key.wasPressedThisFrame) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, -0.624939f - 0.030061f, 0);
+            TSI.activeVerse = 3;
         } else if (Keyboard.current.digit4Key.wasPressedThisFrame) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, -2.999939f - 0.030061f, 0);
+            TSI.activeVerse = 4;
         } else if (Keyboard.current.digit5Key.wasPressedThisFrame) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, -5.374954f - 0.030061f, 0);
+            TSI.activeVerse = 5;
         }
     }
 
@@ -54,16 +61,19 @@ public class UIControl : MonoBehaviour
         float lr = value.Get<float>();
 
         if (lr == 1) {
-            Debug.Log("Ich bin hier");
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, selector.GetComponent<RectTransform>().anchoredPosition.y + 2.375f, 0);
+            TSI.activeVerse--;
         } else if (lr == -1) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, selector.GetComponent<RectTransform>().anchoredPosition.y + -2.375f, 0);
+            TSI.activeVerse++;
         }
 
         if (selector.GetComponent<RectTransform>().anchoredPosition.y > 4.095f) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, -5.374954f - 0.030061f, 0);
+            TSI.activeVerse = 5;
         } else if (selector.GetComponent<RectTransform>().anchoredPosition.y < -6f) {
             selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.3332977f, 4.095f, 0);
+            TSI.activeVerse = 1;
         }
     }
 }

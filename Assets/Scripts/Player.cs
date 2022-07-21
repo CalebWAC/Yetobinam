@@ -29,4 +29,9 @@ public class Player : MonoBehaviour
     IEnumerator WaitToRecheck() {
         yield return new WaitForSeconds(2.5f);
     }
+
+    void OnAttack()
+    {
+        GameObject.Find("The Implementer").GetComponent<TheSwordImplementer>().Implement();
+    }
 }
