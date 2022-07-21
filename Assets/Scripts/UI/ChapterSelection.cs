@@ -40,6 +40,22 @@ public class ChapterSelection : MonoBehaviour
                             ib.colors = SetColor(colors, false);
                         }
                     }
+                } else if (implementer.book == "Psalms") {
+                    if (implementer.chapter == 119) {
+                        if (i == 133) {
+                            ib.colors = SetColor(colors, true);
+                        } else {
+                            ib.colors = SetColor(colors, false);
+                        }
+                    }
+                } else if (implementer.book == "Isaiah") {
+                    if (implementer.chapter == 30) {
+                        if (i == 22) {
+                            ib.colors = SetColor(colors, true);
+                        } else {
+                            ib.colors = SetColor(colors, false);
+                        }
+                    }
                 } else if (implementer.book == "Hebrews") {
                     if (implementer.chapter == 12) {
                         if (i == 29) {
@@ -49,14 +65,6 @@ public class ChapterSelection : MonoBehaviour
                         }
                     } else if (implementer.chapter == 4) {
                         if (i == 12) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
-                    }
-                } else if (implementer.book == "Psalms") {
-                    if (implementer.chapter == 119) {
-                        if (i == 133) {
                             ib.colors = SetColor(colors, true);
                         } else {
                             ib.colors = SetColor(colors, false);
@@ -103,6 +111,11 @@ public class ChapterSelection : MonoBehaviour
             case "Psalms":
                 if (implementer.chapter == 119) {
                     return 176;
+                }
+                break;
+            case "Isaiah":
+                if (implementer.chapter == 30) {
+                    return 33;
                 }
                 break;
             case "Hebrews":

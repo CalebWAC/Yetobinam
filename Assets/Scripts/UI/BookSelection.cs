@@ -37,15 +37,22 @@ public class BookSelection : MonoBehaviour
                         ib.colors = SetColor(colors, false);
                     }
                     break;
-                case "Hebrews":
-                    if (i == 12 || i == 4) {
+                case "Psalms":
+                    if (i == 119) {
                         ib.colors = SetColor(colors, true);
                     } else {
                         ib.colors = SetColor(colors, false);
                     }
                     break;
-                case "Psalms":
-                    if (i == 119) {
+                case "Isaiah":
+                    if (i == 30) {
+                        ib.colors = SetColor(colors, true);
+                    } else {
+                        ib.colors = SetColor(colors, false);
+                    }
+                    break;
+                case "Hebrews":
+                    if (i == 12 || i == 4) {
                         ib.colors = SetColor(colors, true);
                     } else {
                         ib.colors = SetColor(colors, false);
@@ -62,7 +69,7 @@ public class BookSelection : MonoBehaviour
         }
 
         // Deactivate the unused chapters
-        for (int i = chapters + 1; i <= 64; i++) { // Change the 32 to the number of total chapters
+        for (int i = chapters + 1; i <= 68; i++) { // Change the 68 to the number of total chapters
             string name = $"/Canvas/Chapters-Verses/Viewport/Content/{i}";
             GameObject.Find(name).SetActive(false);
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SphereOfInfluence : MonoBehaviour
@@ -20,6 +21,10 @@ public class SphereOfInfluence : MonoBehaviour
         {
             inRadius.Remove(other.gameObject);
         }
+    }
+
+    void Update() {
+        inRadius = inRadius.Where(i => i != null).ToList();
     }
 
     // Prevents the sphere of influence affecting the physical world

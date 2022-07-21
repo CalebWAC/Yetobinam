@@ -19,8 +19,16 @@ public class TheSwordImplementer : MonoBehaviour
             case "Exo":
                 if (chapter == 20) {
                     if (verse == 17) {
-                        Destroy("Envy");
-                        Debug.Log("“You shall not covet your neighbor’s house; you shall not covet your neighbor’s wife, or his male servant, or his female servant, or his ox, or his donkey, or anything that is your neighbor’s.”");
+                        DestroyEnemy("Envy");
+                        Debug.Log("“You shall not covet your neighbor’s house; you shall not covet your neighbor’s wife, or his male servant, or his female servant, or his ox, or his donkey, or anything that is your neighbor’s.”"); // ESV
+                    }
+                }
+                break;
+            case "Isa":
+                if (chapter == 30) {
+                    if (verse == 22) {
+                        DestroyEnemy("Idolism");
+                        Debug.Log("Then you will defile your carved idols overlaid with silver and your gold-plated metal images. You will scatter them as unclean things. You will say to them, “Be gone!”"); // ESV
                     }
                 }
                 break;
@@ -28,7 +36,7 @@ public class TheSwordImplementer : MonoBehaviour
     }
 
     // Destroys enemies that are within range and of the same type
-    void Destroy(string type) 
+    void DestroyEnemy(string type) 
     {
         List<GameObject> inRadius = sphereOfInfluence.GetComponent<SphereOfInfluence>().inRadius;
 
