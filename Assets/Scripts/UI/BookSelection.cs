@@ -24,46 +24,36 @@ public class BookSelection : MonoBehaviour
             // Color the active chapters by book
             switch (gameObject.name) {
                 case "Genesis":
-                    if (i == 1) {
-                        ib.colors = SetColor(colors, true);
-                    } else {
-                        ib.colors = SetColor(colors, false);
-                    }
+                    if (i == 1) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
                     break;
                 case "Exodus":
-                    if (i == 20) {
-                        ib.colors = SetColor(colors, true);
-                    } else {
-                        ib.colors = SetColor(colors, false);
-                    }
+                    if (i == 20) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
+                    break;
+                case "Job":
+                    if (i == 31) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
                     break;
                 case "Psalms":
-                    if (i == 119) {
-                        ib.colors = SetColor(colors, true);
-                    } else {
-                        ib.colors = SetColor(colors, false);
-                    }
+                    if (i == 119) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
                     break;
                 case "Isaiah":
-                    if (i == 30) {
-                        ib.colors = SetColor(colors, true);
-                    } else {
-                        ib.colors = SetColor(colors, false);
-                    }
+                    if (i == 30) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
+                    break;
+                case "Jeremiah":
+                    if (i == 13) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
                     break;
                 case "Hebrews":
-                    if (i == 12 || i == 4) {
-                        ib.colors = SetColor(colors, true);
-                    } else {
-                        ib.colors = SetColor(colors, false);
-                    }
+                    if (i == 12 || i == 4) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
                     break;
                 case "Ephesians":
-                    if (i == 6) {
-                        ib.colors = SetColor(colors, true);
-                    } else {
-                        ib.colors = SetColor(colors, false);
-                    }
+                    if (i == 6) ib.colors = SetColor(colors, true);
+                    else ib.colors = SetColor(colors, false);
                     break;
             }
         }

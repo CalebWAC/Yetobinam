@@ -11,27 +11,20 @@ public class TheSwordImplementer : MonoBehaviour
     
     public void Implement()
     {
-        string book; int chapter; int verse;
         string text = (GameObject.Find($"CV{activeVerse}").GetComponentInChildren(typeof(TMPro.TextMeshProUGUI)) as TMPro.TextMeshProUGUI).text;
-        Parse(text, out book, out chapter, out verse);
         
-        switch (book) {
-            case "Exo":
-                if (chapter == 20) {
-                    if (verse == 17) {
-                        DestroyEnemy("Envy");
-                        Debug.Log("“You shall not covet your neighbor’s house; you shall not covet your neighbor’s wife, or his male servant, or his female servant, or his ox, or his donkey, or anything that is your neighbor’s.”"); // ESV
-                    }
-                }
-                break;
-            case "Isa":
-                if (chapter == 30) {
-                    if (verse == 22) {
-                        DestroyEnemy("Idolism");
-                        Debug.Log("Then you will defile your carved idols overlaid with silver and your gold-plated metal images. You will scatter them as unclean things. You will say to them, “Be gone!”"); // ESV
-                    }
-                }
-                break;
+        if (text == "Exo 20:17") {
+            DestroyEnemy("Envy");
+            Debug.Log("“You shall not covet your neighbor’s house; you shall not covet your neighbor’s wife, or his male servant, or his female servant, or his ox, or his donkey, or anything that is your neighbor’s.”"); // ESV
+        } else if (text == "Isa 30:22") {
+            DestroyEnemy("Idolism");
+            Debug.Log("Then you will defile your carved idols overlaid with silver and your gold-plated metal images. You will scatter them as unclean things. You will say to them, “Be gone!”"); // ESV
+        } else if (text == "Jer 13:15") {
+            DestroyEnemy("Pride");
+            Debug.Log("Hear and give ear; be not proud, for the LORD has spoken."); // ESV
+        } else if (text == "Job 31:1") {
+            DestroyEnemy("Lust");
+            Debug.Log("“I made a covenant with my eyes not to look lustfully at a young woman."); // NIV
         }
     }
 
@@ -45,27 +38,5 @@ public class TheSwordImplementer : MonoBehaviour
                 Destroy(enemy);
             }
         }
-    }
-
-    void Parse(string text, out string book, out int chapter, out int verse) 
-    {
-        book = text.Substring(0, 3);
-
-        string chapterStr = "";
-        string verseStr = "";
-        bool onVerse = false;
-
-        foreach (char c in text.Substring(4)) {
-            if (c == ':') {
-                onVerse = true;
-            } else if (!onVerse) {
-                chapterStr += c;
-            } else {
-                verseStr += c;
-            }
-        } 
-
-        chapter = Int32.Parse(chapterStr);
-        verse = Int32.Parse(verseStr);
     }
 }

@@ -26,57 +26,46 @@ public class ChapterSelection : MonoBehaviour
 
                 if (implementer.book == "Genesis") {
                     if (implementer.chapter == 1) {
-                        if (i == 3) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
+                        if (i == 3) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
                     }
                 } else if (implementer.book == "Exodus") {
                     if (implementer.chapter == 20) {
-                        if (i == 17) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
+                        if (i == 17) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
+                    }
+                } else if (implementer.book == "Job") {
+                    if (implementer.chapter == 31) {
+                        if (i == 1) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
                     }
                 } else if (implementer.book == "Psalms") {
                     if (implementer.chapter == 119) {
-                        if (i == 133) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
+                        if (i == 133) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
                     }
                 } else if (implementer.book == "Isaiah") {
                     if (implementer.chapter == 30) {
-                        if (i == 22) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
+                        if (i == 22) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
+                    }
+                } else if (implementer.book == "Jeremiah") {
+                    if (implementer.chapter == 13) {
+                        if (i == 15) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
                     }
                 } else if (implementer.book == "Hebrews") {
                     if (implementer.chapter == 12) {
-                        if (i == 29) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
+                        if (i == 29) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
                     } else if (implementer.chapter == 4) {
-                        if (i == 12) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
+                        if (i == 12) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
                     }
                 } else if (implementer.book == "Ephesians") {
                     if (implementer.chapter == 6) {
-                        if (i == 15) {
-                            ib.colors = SetColor(colors, true);
-                        } else {
-                            ib.colors = SetColor(colors, false);
-                        }
+                        if (i == 15) ib.colors = SetColor(colors, true);
+                        else ib.colors = SetColor(colors, false);
                     }
                 } 
             }
@@ -99,36 +88,29 @@ public class ChapterSelection : MonoBehaviour
     int GetVersesForChapter(TheImplementer implementer) {
         switch (implementer.book) {
             case "Genesis":
-                if (implementer.chapter == 1) {
-                    return 31;
-                }
+                if (implementer.chapter == 1) return 31;
                 break;
             case "Exodus":
-                if (implementer.chapter == 20) {
-                    return 26;
-                }
+                if (implementer.chapter == 20) return 26;
+                break;
+            case "Job":
+                if (implementer.chapter == 31) return 40;
                 break;
             case "Psalms":
-                if (implementer.chapter == 119) {
-                    return 176;
-                }
+                if (implementer.chapter == 119) return 176;
                 break;
             case "Isaiah":
-                if (implementer.chapter == 30) {
-                    return 33;
-                }
+                if (implementer.chapter == 30) return 33;
+                break;
+            case "Jeremiah":
+                if (implementer.chapter == 13) return 27;
                 break;
             case "Hebrews":
-                if (implementer.chapter == 12) {
-                    return 29;
-                } else if (implementer.chapter == 4) {
-                    return 16;
-                }
+                if (implementer.chapter == 12) return 29;
+                else if (implementer.chapter == 4) return 16;
                 break;
             case "Ephesians":
-                if (implementer.chapter == 6) {
-                    return 24;
-                }
+                if (implementer.chapter == 6) return 24;
                 break;
         }
         return 0;

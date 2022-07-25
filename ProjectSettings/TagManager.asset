@@ -9,6 +9,8 @@ TagManager:
   - Goal
   - EnemyEnvy
   - EnemyIdolism
+  - EnemyPride
+  - EnemyLust
   layers:
   - Default
   - TransparentFX

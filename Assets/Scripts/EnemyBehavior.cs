@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -47,8 +47,14 @@ public class EnemyBehavior : MonoBehaviour
     private float minZ = -115;
     private float maxZ = 45;
 
+    // Diver variables
+    private bool floating = false;
+    private bool diving = false;
+    private AimConstraint lookAt;
+
     void Start() {
         agent = GetComponent<NavMeshAgent>();
+        if (attackType == AttackType.Diver) lookAt = GetComponent<AimConstraint>();
 
         if (spawnType == SpawnType.Randomized) {
             if (movementType != MovementType.Patroller) {
@@ -70,6 +76,16 @@ public class EnemyBehavior : MonoBehaviour
                 } 
                 break;
             case AttackType.Diver:
+                if (WithinRange(player.transform.position, transform.position, 15)) {
+                    if (!diving) {
+                        StartCoroutine(Dive());
+                    }
+                } else {
+                    lookAt.constraintActive = false;
+                    if (!floating) {
+                        StartCoroutine(Float());
+                    }
+                }
                 break;
             case AttackType.Swimmer:
                 break;
@@ -94,11 +110,62 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public static bool WithinRange(Vector3 playerPos, Vector3 enemyPos, float distance) {
+    public static bool WithinRange(Vector3 playerPos, Vector3 enemyPos, float distance) 
+    {
         if (Math.Sqrt(Math.Pow(playerPos.x - enemyPos.x, 2) + Math.Pow(playerPos.y - enemyPos.y, 2) + Math.Pow(playerPos.z - enemyPos.z, 2)) <= distance) {
             return true;
         }
         return false;
+    }
+
+    // Diver functions
+    IEnumerator<WaitForSeconds> Float() 
+    {
+        floating = true;
+
+        for (float i = 0; i < 1; i += 0.03f) {
+            transform.Translate(0, 0.01f, 0);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        for (float i = 0; i < 2; i += 0.03f) {
+            transform.Translate(0, -0.01f, 0);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        for (float i = 0; i < 1; i += 0.03f) {
+            transform.Translate(0, 0.01f, 0);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        floating = false;
+    }
+
+    IEnumerator<WaitForSeconds> Dive()
+    {
+        diving = true;
+
+        lookAt.constraintActive = false;
+        Vector3 beginning = transform.position;
+        // Vector3 end = new Vector3(player.transform.forward.x, transform.position.y, player.transform.forward.z);
+        Vector3 distanceToPlayer = transform.position - player.transform.position;
+        Vector3 end = new Vector3(-distanceToPlayer.x, transform.position.y, -distanceToPlayer.z);
+        for (float t = 0; t <= 1; t += 0.01f) {
+            Vector3 q0 = Vector3.Lerp(beginning, player.transform.position - new Vector3(0, 3, 0), t);
+            Vector3 q1 = Vector3.Lerp(player.transform.position - new Vector3(0, 3, 0), end, t);
+            Vector3 r = Vector3.Lerp(q0, q1, t);
+            transform.position = r;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+
+        lookAt.constraintActive = true;
+        yield return new WaitForSeconds(4f);
+        diving = false;
     }
 }
 

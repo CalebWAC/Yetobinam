@@ -6797,6 +6797,7 @@ GameObject:
   - component: {fileID: 405844272}
   - component: {fileID: 405844271}
   - component: {fileID: 405844270}
+  - component: {fileID: 405844273}
   m_Layer: 5
   m_Name: 31
   m_TagString: Untagged
@@ -6868,7 +6869,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 405844271}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 405844273}
+        m_TargetAssemblyTypeName: ChapterSelection, Assembly-CSharp
+        m_MethodName: GoToVerses
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &405844271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6907,6 +6920,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405844268}
   m_CullTransparentMesh: 1
+--- !u!114 &405844273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405844268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502bf19bfe9936eb99840cd3c57576e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numbers: {fileID: 2057674186}
 --- !u!1 &409030736
 GameObject:
   m_ObjectHideFlags: 0
@@ -9271,8 +9297,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -26662,6 +26688,7 @@ GameObject:
   - component: {fileID: 1343211209}
   - component: {fileID: 1343211208}
   - component: {fileID: 1343211207}
+  - component: {fileID: 1343211210}
   m_Layer: 5
   m_Name: Job
   m_TagString: Untagged
@@ -26711,9 +26738,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.7845579, g: 0.7845579, b: 0.7845579, a: 1}
-    m_HighlightedColor: {r: 0.7845579, g: 0.7845579, b: 0.7845579, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.8784314, g: 0.44313726, b: 0.03529412, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.48235294, b: 0, a: 1}
+    m_PressedColor: {r: 0.8784314, g: 0.44313726, b: 0.03529412, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -26733,7 +26760,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1343211208}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1343211210}
+        m_TargetAssemblyTypeName: BookSelection, Assembly-CSharp
+        m_MethodName: GoToChapters
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1343211208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26772,6 +26811,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343211205}
   m_CullTransparentMesh: 1
+--- !u!114 &1343211210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343211205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bad1677e8737ce3c96001301d462d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapters: 42
+  books: {fileID: 720919915}
+  number: {fileID: 2057674186}
+  context: {fileID: 692996417}
 --- !u!1 &1345004429
 GameObject:
   m_ObjectHideFlags: 0
@@ -26898,8 +26953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -27051,6 +27106,7 @@ GameObject:
   - component: {fileID: 1355502871}
   - component: {fileID: 1355502870}
   - component: {fileID: 1355502869}
+  - component: {fileID: 1355502872}
   m_Layer: 5
   m_Name: Jeremiah
   m_TagString: Untagged
@@ -27100,9 +27156,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.7845579, g: 0.7845579, b: 0.7845579, a: 1}
-    m_HighlightedColor: {r: 0.7845579, g: 0.7845579, b: 0.7845579, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.8784314, g: 0.44313726, b: 0.03529412, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.48235294, b: 0, a: 1}
+    m_PressedColor: {r: 0.8784314, g: 0.44313726, b: 0.03529412, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -27122,7 +27178,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1355502870}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1355502872}
+        m_TargetAssemblyTypeName: BookSelection, Assembly-CSharp
+        m_MethodName: GoToChapters
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1355502870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27161,6 +27229,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355502867}
   m_CullTransparentMesh: 1
+--- !u!114 &1355502872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355502867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bad1677e8737ce3c96001301d462d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapters: 52
+  books: {fileID: 720919915}
+  number: {fileID: 2057674186}
+  context: {fileID: 692996417}
 --- !u!1 &1358072902
 GameObject:
   m_ObjectHideFlags: 0
@@ -28741,6 +28825,7 @@ GameObject:
   - component: {fileID: 1440296649}
   - component: {fileID: 1440296648}
   - component: {fileID: 1440296647}
+  - component: {fileID: 1440296650}
   m_Layer: 5
   m_Name: 13
   m_TagString: Untagged
@@ -28812,7 +28897,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1440296648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1440296650}
+        m_TargetAssemblyTypeName: ChapterSelection, Assembly-CSharp
+        m_MethodName: GoToVerses
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1440296648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28851,6 +28948,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440296645}
   m_CullTransparentMesh: 1
+--- !u!114 &1440296650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440296645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502bf19bfe9936eb99840cd3c57576e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numbers: {fileID: 2057674186}
 --- !u!1 &1444176644
 GameObject:
   m_ObjectHideFlags: 0
@@ -30483,8 +30593,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
