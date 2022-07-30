@@ -155,8 +155,8 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 distanceToPlayer = transform.position - player.transform.position;
         Vector3 end = new Vector3(-distanceToPlayer.x, transform.position.y, -distanceToPlayer.z);
         for (float t = 0; t <= 1; t += 0.01f) {
-            Vector3 q0 = Vector3.Lerp(beginning, player.transform.position - new Vector3(0, 3, 0), t);
-            Vector3 q1 = Vector3.Lerp(player.transform.position - new Vector3(0, 3, 0), end, t);
+            Vector3 q0 = Vector3.Lerp(beginning, player.transform.position - new Vector3(0, 5, 0), t);
+            Vector3 q1 = Vector3.Lerp(player.transform.position - new Vector3(0, 5, 0), end, t);
             Vector3 r = Vector3.Lerp(q0, q1, t);
             transform.position = r;
             yield return new WaitForSeconds(0.01f);
